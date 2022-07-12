@@ -22,6 +22,10 @@ app.get('/', (req, res) => {
 app.use('/upload', fileHandler, uploadRoute)
 app.use('/file', fileRoute)
 
+app.use('*', (req, res) => {
+  res.render('404', { url: `${req.get('host')}${req.originalUrl}` })
+})
+
 app.listen(process.env.PORT || 3000, () => {
-  console.log('http://localhost:3000')
+  console.log('Server running')
 })

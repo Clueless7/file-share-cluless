@@ -22,7 +22,7 @@ const handleDownload = async (req, res) => {
 
     res.download(file.path, file.originalName)
   } catch (error) {
-    console.log(error)
+    res.status(500).send('Server error')
   }
 }
 
